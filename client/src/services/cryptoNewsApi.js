@@ -1,21 +1,24 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { PrimaryRoutes, url } from "./constants";
 
 const cryptoNewsHeaders = {
-  'x-bingapis-sdk': 'true',
-    'x-rapidapi-host': 'bing-news-search1.p.rapidapi.com',
-    'x-rapidapi-key': process.env.RAPID_API_KEY
+  "x-bingapis-sdk": "true",
+  "x-rapidapi-host": "bing-news-search1.p.rapidapi.com",
+  "x-rapidapi-key": process.env.RAPID_API_KEY,
 };
 
-const baseUrl = 'https://bing-news-search1.p.rapidapi.com'
+const baseUrl = "https://bing-news-search1.p.rapidapi.com";
 
-const createRequest = (url) => ({ url, headers: cryptoNewsHeaders });
+// const createRequest = (url) => ({ url, headers: cryptoNewsHeaders });
 
 export const cryptoNewsApi = createApi({
-  reducerPath: 'cryptoNewsApi',
-  baseQuery: fetchBaseQuery({ baseUrl }),
+  reducerPath: "cryptoNewsApi",
+  baseQuery: fetchBaseQuery({ baseUrl: url() }),
   endpoints: (builder) => ({
     getCryptoNews: builder.query({
-      query: ({ newsCategory, count }) => createRequest(`/news/search?q=${newsCategory}&safeSearch=Off&textFormat=Raw&freshness=Day&count=${count}`),
+      query: ({ newsCategory, count }) =>
+        PrimaryRoutes.rapidApi +
+        `/fetchNews?newsCategory=${newsCategory}&count=${count}`,
     }),
   }),
 });

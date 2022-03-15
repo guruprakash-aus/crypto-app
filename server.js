@@ -50,3 +50,4 @@ app.get('/crypto-api', (req, res) => {
 
 app.use("/crypto-api/coinRanking", routes.coinRanking);
 app.use("/crypto-api/coinApi", routes.coinApi);
+app.use("/crypto-api/rapidApi", routes.rapidApi);

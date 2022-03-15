@@ -14,7 +14,12 @@ const fetchCoins = async (req, res) => {
   console.log("Fetch Coins");
   try {
     const coinsResult = await axios.get(
-      `${BASE_URL}/coins?limit=${req.query.limit}`
+      `${BASE_URL}/coins?limit=${req.query.limit}`,
+      {
+        headers: {
+          "x-access-key": COIN_RANKING_API_KEY,
+        },
+      }
     );
     res.send(coinsResult.data);
   } catch (error) {
@@ -27,7 +32,12 @@ const fetchCoinDetails = async (req, res) => {
   console.log("Fetch Coin Details");
   try {
     const coinDetailsResult = await axios.get(
-      `${BASE_URL}/coin/${req.query.coinID}`
+      `${BASE_URL}/coin/${req.query.coinID}`,
+      {
+        headers: {
+          "x-access-key": COIN_RANKING_API_KEY,
+        },
+      }
     );
     res.send(coinDetailsResult.data);
   } catch (error) {
@@ -40,7 +50,12 @@ const fetchCoinHistory = async (req, res) => {
   console.log("Fetch Coin History");
   try {
     const coinHistoryResult = await axios.get(
-      `${BASE_URL}/coin/${req.query.coinID}/history?timePeriod=${req.query.timeperiod}`
+      `${BASE_URL}/coin/${req.query.coinID}/history?timePeriod=${req.query.timeperiod}`,
+      {
+        headers: {
+          "x-rapidapi-key": RAPID_API_KEY,
+        },
+      }
     );
     res.send(coinHistoryResult.data);
   } catch (error) {
@@ -48,7 +63,6 @@ const fetchCoinHistory = async (req, res) => {
     res.send(error);
   }
 };
-
 
 coinRanking.get("/fetchCoins", fetchCoins);
 coinRanking.get("/fetchCoinDetails", fetchCoinDetails);

@@ -1,6 +1,7 @@
 export const PrimaryRoutes = {
     CoinRanking: '/crypto-api/coinranking',
     CoinApi: '/crypto-api/coinApi',
+    rapidApi: '/crypto-api/rapidApi',
 }
 
 export const url = () => {

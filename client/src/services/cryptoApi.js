@@ -16,7 +16,7 @@ export const cryptoApi = createApi({
     getCryptoHistory: builder.query({
       query: ({ coinId, timeperiod }) =>
         PrimaryRoutes.CoinRanking +
-        `/fetchCoinHistory/?coinID=${coinId}&timeperiod=${timeperiod}`,
+        `/fetchCoinHistory?coinID=${coinId}&timeperiod=${timeperiod}`,
     }),
     getExchanges: builder.query({
       query: () => PrimaryRoutes.CoinRanking + "/fetchExchanges",
