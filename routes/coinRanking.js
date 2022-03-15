@@ -12,6 +12,8 @@ const BASE_URL1 = "https://coinpaprika1.p.rapidapi.com";
 
 const fetchCoins = async (req, res) => {
   console.log("Fetch Coins");
+  console.log(COIN_RANKING_API_KEY)
+  console.log(RAPID_API_KEY)
   try {
     const coinsResult = await axios.get(
       `${BASE_URL}/coins?limit=${req.query.limit}`,
@@ -21,6 +23,7 @@ const fetchCoins = async (req, res) => {
         },
       }
     );
+    console.log(coinsResult)
     res.send(coinsResult.data);
   } catch (error) {
     console.log(error);

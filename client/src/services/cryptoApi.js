@@ -6,8 +6,14 @@ export const cryptoApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: url() }),
   endpoints: (builder) => ({
     getCryptos: builder.query({
-      query: (count) =>
-        PrimaryRoutes.CoinRanking + `/fetchCoins?limit=${count}`,
+      query: (count) => {
+        console.log("count", count);
+        return (
+          PrimaryRoutes.CoinRanking + `/fetchCoins?limit=${count}`
+        )
+        
+      }
+        
     }),
     getCryptoDetails: builder.query({
       query: (coinID) =>
