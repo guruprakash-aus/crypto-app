@@ -23,7 +23,6 @@ const fetchCoins = async (req, res) => {
         },
       }
     );
-    console.log(coinsResult)
     res.send(coinsResult.data);
   } catch (error) {
     console.log(error);
